@@ -1,0 +1,61 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    background-color: darkblue;
+    display: flex;
+}
+
+.memory-game {
+    width: 640px;
+    height: 640px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: gray;
+    /* add flex display on body and margin auto to center the game container */
+    margin: auto;
+}
+
+.memory-card {
+    /* create width and height without forgetting about the margins */
+    width: calc(25% - 10px);
+    height: calc(33.33% - 10px);
+    border: 2px solid white;
+    position: relative;
+    margin: 5px;
+    /* need a starting place for transitions */
+    transform: scale(1);
+}
+
+/* create a click effect to memory card */
+/* the pseudo class active is triggered whenever an element gets clicked on */
+.memory-card:active {
+    /* a transform scale of 97% of original size */
+    transform: scale(.97);
+    /* make the transition smoother  */
+    transition: transform .2s
+}
+
+.front-face, .back-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.back-face {
+    background: black
+}
+
+.front-face {
+    background: red;
+}
+
+img {
+    width: 100px;
+}
