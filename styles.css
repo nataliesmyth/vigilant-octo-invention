@@ -29,6 +29,8 @@ body{
     margin: 5px;
     /* need a starting place for transitions */
     transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s;
 }
 
 /* create a click effect to memory card */
@@ -40,6 +42,10 @@ body{
     transition: transform .2s
 }
 
+.memory-card.flip {
+    transform: rotateY(180deg);
+}
+
 .front-face, .back-face {
     position: absolute;
     width: 100%;
@@ -49,7 +55,7 @@ body{
 }
 
 .back-face {
-    background: black
+    background: black;
 }
 
 .front-face {
