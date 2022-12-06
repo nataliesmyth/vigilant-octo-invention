@@ -30,6 +30,7 @@ body{
     /* need a starting place for transitions */
     transform: scale(1);
     transform-style: preserve-3d;
+    /* add a transition to the transform property */
     transition: transform .5s;
 }
 
@@ -52,6 +53,7 @@ body{
     height: 100%;
     padding: 20px;
     border-radius: 5px;
+    backface-visibility: hidden;
 }
 
 .back-face {
@@ -60,6 +62,8 @@ body{
 
 .front-face {
     background: red;
+    /* rotate front face in order to see it */
+    transform: rotateY(180deg);
 }
 
 img {
