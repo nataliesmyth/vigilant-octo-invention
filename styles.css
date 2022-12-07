@@ -66,6 +66,33 @@ body{
     transform: rotateY(180deg);
 }
 
+.red {
+    background: red;
+}
+
+.orange {
+    background: orange;
+}
+
+.yellow {
+    background: yellow;
+}
+
+.green {
+    background: green;
+}
+
+.blue {
+    background: blue;
+}
+
+.purple {
+    background: purple;
+}
+
+.white {
+    background: white;
+}
 img {
     width: 100px;
 }

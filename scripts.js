@@ -3,12 +3,10 @@
 const cards = document.querySelectorAll('.memory-card');
 
 let hasFlippedCard = false;
+let lockBoard = false;
 let firstCard, secondCard;
 function flipCard() {
-    console.log('i was clicked')
-    // in this context, the this keyword represents the element that fired the click event, <div class="memory-card"></div
-    // console.log(this)
-    // we want to access the class list of the memory cards and toggle the flip class
+    if (lockBoard) return;
     this.classList.add('flip')
 
     if (!hasFlippedCard) {
@@ -22,21 +20,30 @@ function flipCard() {
         hasFlippedCard = false;
         secondCard = this;
 
-        // check if cards match
-        if (firstCard.dataset.framework === secondCard.dataset.framework) {
-            // it's a match
-            firstCard.removeEventListener('click', flipCard);
-            secondCard.removeEventListener('click', flipCard);
-        } else {
-            // cards no not match
-            setTimeout(() => {
-
-                firstCard.classList.remove('flip');
-                secondCard.classList.remove('flip');
-            }, 1500);
-        }
+        checkForMatch()
     }
 }
-// loop through the list of cards and attach an event listener to each one
-// we want to listen to a click event, and every time that event happens we will execute a function called flipCard, declared above.
+function checkForMatch () {
+    if (firstCard.dataset.framework === secondCard.dataset.framework){ disableCards();
+    } else {
+        unflipCards();
+    }
+}
+
+function disableCards() {
+    firstCard.removeEventListener('click', flipCard);
+    secondCard.removeEventListener('click', flipCard);
+}
+
+function unflipCards() {
+    lockBoard = true;
+    
+    setTimeout(() => {
+        firstCard.classList.remove('flip');
+        secondCard.classList.remove('flip');
+
+        lockBoard = false;
+    }, 1500);
+}
+
 cards.forEach(card => card.addEventListener('click', flipCard))
