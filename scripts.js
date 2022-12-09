@@ -7,6 +7,7 @@ let lockBoard = false;
 let firstCard, secondCard;
 function flipCard() {
     if (lockBoard) return;
+
     this.classList.add('flip')
 
     if (!hasFlippedCard) {
@@ -33,6 +34,8 @@ function checkForMatch () {
 function disableCards() {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
+
+    resetBoard();
 }
 
 function unflipCards() {
@@ -42,8 +45,15 @@ function unflipCards() {
         firstCard.classList.remove('flip');
         secondCard.classList.remove('flip');
 
-        lockBoard = false;
+        resetBoard();
     }, 1500);
+}
+
+// prevent user from finding match by double clicking one card
+// we have to set first card and second card to null after each round
+function resetBoard() {
+    [hasFlippedCard, lockBoard] = [false, false];
+    [firstCard, secondCard] = [null, null]
 }
 
 cards.forEach(card => card.addEventListener('click', flipCard))
