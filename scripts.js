@@ -46,7 +46,7 @@ function unflipCards() {
         secondCard.classList.remove('flip');
 
         resetBoard();
-    }, 1500);
+    }, 900);
 }
 
 // prevent user from finding match by double clicking one card
