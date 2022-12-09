@@ -20,9 +20,9 @@
 
 ## Technologies Used
 
--HTML
--CSS
--VANILLA JAVASCRIPT
+* HTML
+* CSS
+* VANILLA JAVASCRIPT
 
 ## License
 
