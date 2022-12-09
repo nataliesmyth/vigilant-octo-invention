@@ -1,6 +1,7 @@
 // make card flip
 // first, make a list of all memory card elements and store it in a constant variable:
 const cards = document.querySelectorAll('.memory-card');
+const reset = document.getElementById('reset');
 
 let hasFlippedCard = false;
 let lockBoard = false;
@@ -56,6 +57,17 @@ function resetBoard() {
     [firstCard, secondCard] = [null, null]
 }
 
+function resetGame() {
+    cards.forEach(card => card.classList.remove('flip'))
+    console.log('reset');
+    hasFlippedCard = false;
+    lockBoard = false;
+    console.log(lockBoard)
+    console.log(hasFlippedCard)
+    firstCard = null;
+    secondCard = null;
+}
+
 // Adding the outer most parenthesis invokes the function immediately, so the cards are shuffled before the game starts
 (function shuffle() {
     cards.forEach(card => {
@@ -64,4 +76,5 @@ function resetBoard() {
     });
 })();
 
-cards.forEach(card => card.addEventListener('click', flipCard))
+cards.forEach(card => card.addEventListener('click', flipCard));
+reset.addEventListener('click', resetGame);
