@@ -60,6 +60,10 @@ function resetBoard() {
 function resetGame() {
     cards.forEach(card => card.classList.remove('flip'))
     cards.forEach(card => card.addEventListener('click', flipCard));
+    cards.forEach(card => {
+        let randomPos = Math.floor(Math.random() * 12);
+        card.style.order = randomPos;
+    });
     console.log('reset');
     hasFlippedCard = false;
     lockBoard = false;
@@ -67,7 +71,6 @@ function resetGame() {
     console.log(hasFlippedCard)
     firstCard = null;
     secondCard = null;
-    shuffle();
 }
 
 // Adding the outer most parenthesis invokes the function immediately, so the cards are shuffled before the game starts
